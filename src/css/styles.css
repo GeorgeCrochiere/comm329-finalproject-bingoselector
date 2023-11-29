@@ -1,0 +1,59 @@
+:root {}
+
+section>textarea#itemInput {
+    height: 30rem;
+    width: 40rem;
+    overflow: auto;
+    resize: none;
+}
+
+html,
+body {
+    padding: 0px;
+    margin: 0px;
+    height: 100vh;
+    font-family: 'Pixelify Sans', sans-serif;
+}
+
+body {
+    display: grid;
+    grid-template:
+        "header" max-content
+        "input" 1fr
+        "footer" max-content / 1fr;
+    min-height: 100%;
+    background-color: lightgray;
+}
+
+header {
+    grid-area: "header";
+    background-color: darkgreen;
+}
+
+footer {
+    grid-area: "footer";
+    background-color: darkgreen;
+}
+
+section#dataInput {
+    grid-area: "input";
+}
+
+section#randomWheel,
+section#results,
+section#pastChoices {
+    height: 0px;
+    overflow: hidden;
+}
+
+.hidden {
+    display: none;
+}
+
+.confirm {
+    color: green;
+}
+
+.cancel {
+    color: red;
+}

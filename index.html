@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="George D. Crochiere">
+    <title>COMM329 - Final Project - Bingo Wheel</title>
+    <!-- Style Sheets -->
+    <link rel="stylesheet" href="./src/css/modnorm.min.css" />
+    <link rel="stylesheet" href="./src/css/styles.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body>
+    <section id="enableJS">
+        <h1>Please enable JavaScript in your browser to continue.</h1>
+    </section>
+    <header>
+        <h1>Clarkson Honors Bingo!</h1>
+        <ul>
+            <li><a onclick="toggleModal('aboutModal')">About <i class="material-symbols-outlined">info</i></a></li>
+        </ul>
+    </header>
+
+    <!-- Data Input -->
+    <section id="dataInput">
+        <h1>Item Input</h1>
+        <p>Enter the items that you want to incorporate into the wheel! Seperate each item with a newline by pressing <strong>ENTER</strong>.</p>
+        <textarea id="itemInput" name="Item Input" placeholder="Item 1&#10;Item 2&#10;Item 3&#10;Item 4..."></textarea>
+        <button id="resetButton">Reset</button>
+        <button id="playButton">Play!</button>
+    </section>
+
+    <!-- Gameplay -->
+    <section id="randomWheel">
+        <h1>Play!</h1>
+        <div id="gameOptions"></div>
+    </section>
+    <section id="results">
+        <p><span id="dispChoice"></span></p>
+        <button>Next Random Item</button>
+        <button>Next New Item</button>
+        <button>Reset Game</button>
+        <button>Change Game Data</button>
+    </section>
+
+    <!-- Past Choices -->
+    <section id="pastChoices">
+        <h1>Past Choices</h1>
+        <ul id="oldChoices"></ul>
+    </section>
+
+    <!-- About Screen - Modal -->
+    <div id="aboutModal" class="modal hidden">
+        <h1 class="aboutTitle">About</h1>
+        <a onclick="toggleModal('aboutModal')"><i class="material-symbols-outlined close">close_fullscreen</i></a>
+        <section class="aboutInfo">
+            <p>This site is a random item selector, typically used for games of Bingo, that allows for the removal of items with later options to reset the game back to the original, default state. It does so by storing the inputted list into the browser's session storage.</p>
+            <p>This site was developed as the final project for George D. Crochiere for the COMM329 course at Clarkson University, with the intend of developing a tool to help the Clarkson Honors Program.</p>
+        </section>
+    </div>
+
+    <!-- Confirm Modal -->
+    <div id="confirmModal" class="modal hidden">
+        <h1>Confirm</h1>
+        <p>Are you sure you want to reset?</p>
+        <button class="confirm"><i class="material-symbols-outlined">check_circle</i></button>
+        <button class="cancel"><i class="material-symbols-outlined">cancel</i></button>
+    </div>
+
+    <!-- Card Generation: TBD -->
+    <!-- <section id="card_generation"></section> -->
+    <footer>
+        <p>&copy;2023. George D. Crochiere</p>
+    </footer>
+    <script src="./src/js/main.js"></script>
+</body>
+</html>
