@@ -17,7 +17,7 @@
     <header>
         <h1>Clarkson Honors Bingo!</h1>
         <ul>
-            <li><a onclick="toggleModal('aboutModal')">About <i class="material-symbols-outlined">info</i></a></li>
+            <li><a onclick="toggleModal('aboutModal')"><i class="material-symbols-outlined aboutIcon">info</i></a></li>
         </ul>
     </header>
 
@@ -26,46 +26,63 @@
         <h1>Item Input</h1>
         <p>Enter the items that you want to incorporate into the wheel! Seperate each item with a newline by pressing <strong>ENTER</strong>.</p>
         <textarea id="itemInput" name="Item Input" placeholder="Item 1&#10;Item 2&#10;Item 3&#10;Item 4..."></textarea>
-        <button id="resetButton">Reset</button>
-        <button id="playButton">Play!</button>
+        <div class="buttonPanel">
+            <button id="resetButton" onclick="toggleModal('confirmModal')">Reset</button>
+            <button id="playButton" onclick="startGame()">Play!</button>
+        </div>
     </section>
 
     <!-- Gameplay -->
-    <section id="randomWheel">
+    <section id="randomWheel" class="hidden">
         <h1>Play!</h1>
         <div id="gameOptions"></div>
-    </section>
-    <section id="results">
-        <p><span id="dispChoice"></span></p>
-        <button>Next Random Item</button>
-        <button>Next New Item</button>
-        <button>Reset Game</button>
-        <button>Change Game Data</button>
+        <section id="results" class="modal hidden">
+            <p><span id="dispChoice"></span></p>
+            <button>Next Random Item</button>
+            <button>Next New Item</button>
+            <button>Reset Game</button>
+            <button>Change Game Data</button>
+        </section>
     </section>
 
     <!-- Past Choices -->
-    <section id="pastChoices">
+    <section id="pastChoices" class="hidden">
         <h1>Past Choices</h1>
         <ul id="oldChoices"></ul>
     </section>
 
     <!-- About Screen - Modal -->
     <div id="aboutModal" class="modal hidden">
-        <h1 class="aboutTitle">About</h1>
-        <a onclick="toggleModal('aboutModal')"><i class="material-symbols-outlined close">close_fullscreen</i></a>
-        <section class="aboutInfo">
-            <p>This site is a random item selector, typically used for games of Bingo, that allows for the removal of items with later options to reset the game back to the original, default state. It does so by storing the inputted list into the browser's session storage.</p>
-            <p>This site was developed as the final project for George D. Crochiere for the COMM329 course at Clarkson University, with the intend of developing a tool to help the Clarkson Honors Program.</p>
+        <section class="modalContent">
+            <h1 class="aboutTitle">About</h1>
+            <a onclick="toggleModal('aboutModal')"><i class="material-symbols-outlined close">close_fullscreen</i></a>
+            <section class="aboutInfo">
+                <p>This site is a random item selector, typically used for games of Bingo, that allows for the removal of items with later options to reset the game back to the original, default state. It does so by storing the inputted list into the browser's session storage.</p>
+                <p>This site was developed as the final project for George D. Crochiere for the COMM329 course at Clarkson University, with the intend of developing a tool to help the Clarkson Honors Program.</p>
+            </section>
         </section>
     </div>
 
     <!-- Confirm Modal -->
     <div id="confirmModal" class="modal hidden">
-        <h1>Confirm</h1>
-        <p>Are you sure you want to reset?</p>
-        <button class="confirm"><i class="material-symbols-outlined">check_circle</i></button>
-        <button class="cancel"><i class="material-symbols-outlined">cancel</i></button>
+        <section class="modalContent">
+            <h1>Confirm</h1>
+            <p>Are you sure you want to reset?</p>
+            <button class="confirm" onclick="reset()"><i class="material-symbols-outlined">check_circle</i></button>
+            <button class="cancel" onclick="toggleModal('confirmModal')"><i class="material-symbols-outlined">cancel</i></button>
+        </section>
     </div>
+
+    <div id="invalidListModal" class="modal hidden">
+        <section class="modalContent">
+            <h1>Error: No list present.</h1>
+            <p>Please enter a list into the text box.</p>
+            <button class="confirm" onclick="toggleModal('invalidListModal')"><i class="material-symbols-outlined">check_circle</i></button>
+        </section>
+    </div>
+
+    <!-- Animation -->
+    <div id="animationTransition" class="mainRectangle"></div>
 
     <!-- Card Generation: TBD -->
     <!-- <section id="card_generation"></section> -->
