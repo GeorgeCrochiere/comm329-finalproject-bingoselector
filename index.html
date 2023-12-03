@@ -35,21 +35,37 @@
     <!-- Gameplay -->
     <section id="randomWheel" class="hidden">
         <h1>Play!</h1>
-        <div id="gameOptions"></div>
-        <section id="results" class="modal hidden">
+        <section class="gameList">
+            <div id="gameOptions1" class="gameOptions defaultAnim"></div>
+            <div id="gameOptions2" class="gameOptions defaultAnim"></div>
+        </section>
+        <a href="#" class="playButton"><i class="material-symbols-outlined close">play_circle</i></a>
+        <div id="pastGuessToggle">
+            <button onclick="toggleModal('pastModal')">Past Guesses</button>
+            <button>Reset Game</button>
+            <button>New Game</button>
+        </div>
+    </section>
+
+    <!-- Past Choices Modal -->
+    <div id="pastModal" class="modal hidden">
+        <section class="modalContent">
+            <h1>Past Choices</h1>
+            <a onclick="toggleModal('pastModal')"><i class="material-symbols-outlined close">close_fullscreen</i></a>
+            <ul id="oldChoices"></ul>
+        </section>
+    </div>
+
+    <!-- Selected Modal -->
+    <div id="results" class="modal hidden">
+        <section class="modalContent">
             <p><span id="dispChoice"></span></p>
             <button>Next Random Item</button>
             <button>Next New Item</button>
             <button>Reset Game</button>
             <button>Change Game Data</button>
         </section>
-    </section>
-
-    <!-- Past Choices -->
-    <section id="pastChoices" class="hidden">
-        <h1>Past Choices</h1>
-        <ul id="oldChoices"></ul>
-    </section>
+    </div>
 
     <!-- About Screen - Modal -->
     <div id="aboutModal" class="modal hidden">
@@ -90,5 +106,6 @@
         <p>&copy;2023. George D. Crochiere</p>
     </footer>
     <script src="./src/js/main.js"></script>
+    <script src="./src/js/game.js"></script>
 </body>
 </html>

@@ -58,7 +58,6 @@ function showGame() {
     document.getElementById('randomWheel').classList.toggle('showGame');
     document.getElementById('randomWheel').classList.toggle('hidden');
     document.getElementById('dataInput').classList.toggle('hidden');
-    document.getElementById('pastChoices').classList.toggle('hidden');
 }
 
 function storeGameContent() {
@@ -69,6 +68,7 @@ function storeGameContent() {
 
 function setGameContent() {
     let list = sessionStorage.getItem('listData');
+    list.trim();
     let items = [];
     let temp = '';
 
@@ -83,10 +83,30 @@ function setGameContent() {
         }
     }
     items.push(temp);
+    sessionStorage.setItem('listArray', JSON.stringify(items));
+    setVisual();
+}
+
+function setVisual() {
+    let items = JSON.parse(sessionStorage.getItem('listArray'));
+    items = setLongList(items);
 
     let gameList = "";
     items.forEach((item) => {
         gameList += "\t\t<p class=\"listItem\">" + item + "</p>\n";
     });
-    document.getElementById('gameOptions').innerHTML = gameList;
+    // several lists to account for 1 item, example
+    let optionLists = document.getElementsByClassName('gameOptions');
+    Array.prototype.forEach.call(optionLists, function (op) {
+        op.innerHTML = gameList;
+    })
 }
+
+function setLongList(list) {
+    let tbAdded = list;
+    while (list.length < 20) {
+        list = list.concat(tbAdded);
+    }
+    return list;
+}
+

@@ -4,6 +4,7 @@
     --middle: #3a506b;
     --light-secondary: #5bc0be;
     --light-primary: #6fffe9;
+    --transparent-background: rgba(10, 10, 10, .5);
 }
 
 /* Base and initial view */
@@ -76,18 +77,13 @@ section#dataInput {
     grid-area: "input";
 }
 
-section#randomWheel,
-section#pastChoices {
-    overflow: auto;
-}
-
 .hidden {
     display: none;
 }
 
 div.modal {
     position: absolute;
-    background-color: rgba(10, 10, 10, .5);
+    background-color: var(--transparent-background);
     width: 100%;
     height: 100%;
     z-index: 5;
@@ -132,7 +128,8 @@ section#dataInput h1 {
     color: var(--light-primary);
 }
 
-section#dataInput button {
+section#dataInput button,
+div#pastGuessToggle>button {
     color: var(--dark-primary);
     margin-top: 1rem;
     font-size: 2rem;
@@ -142,7 +139,8 @@ section#dataInput button {
     transition: all 0.2s ease-in-out;
 }
 
-section#dataInput button:hover {
+section#dataInput button:hover,
+div#pastGuessToggle>button:hover {
     background-color: var(--dark-secondary);
     color: var(--light-primary);
 }
@@ -209,4 +207,67 @@ div.animEnd {
 /* Game */
 .showGame {
     display: block;
+}
+
+.gameList {
+    overflow: hidden;
+    height: fit-content;
+}
+
+section#randomWheel {
+    margin: auto;
+    background-color: var(--dark-secondary);
+    color: var(--light-secondary);
+    height: 70vh;
+    width: 70%;
+    overflow: hidden;
+    text-align: center;
+    border-radius: 3rem;
+    border: 1px solid var(--light-primary);
+}
+
+section#randomWheel>section {
+    font-size: 3rem;
+    height: calc(70vh - 16rem);
+    overflow: hidden;
+}
+
+section#randomWheel>section>div#gameOptions>h1 {
+    background-color: var(--dark-secondary);
+    color: var(--light-primary);
+}
+
+section#pastGuessToggle {
+    text-align: center;
+}
+
+.playButton {
+    position: absolute;
+    top: 40vh;
+    left: 50%;
+    transform: translate(-50%, 0);
+    color: var(--light-primary);
+    background-color: var(--transparent-background);
+    border-radius: 50%;
+    width: 10rem;
+    height: 10rem;
+}
+
+.playButton>i {
+    font-size: 10rem;
+}
+
+/* Continuous Animation - Prechoice */
+@keyframes constant-movement1 {
+    0% {
+        transform: translateY(0%);
+    }
+
+    100% {
+        transform: translateY(-103%);
+    }
+}
+
+.defaultAnim {
+    animation: constant-movement1 7s linear infinite;
 }
