@@ -1,0 +1,44 @@
+div.animStart {
+    animation: diag-transition-start .6s linear;
+    right: 0px;
+}
+
+div.animEnd {
+    animation: diag-transition-end .6s linear;
+    right: 100%;
+}
+
+@keyframes diag-transition-start {
+    0% {
+        transform: translate(-100%, 0);
+    }
+
+    100% {
+        transform: translate(0%, 0);
+    }
+}
+
+@keyframes diag-transition-end {
+    0% {
+        transform: translate(100%, 0);
+    }
+
+    100% {
+        transform: translate(200%, 0);
+    }
+}
+
+#gameOptions1 {
+    animation: constant-movement 5s linear infinite;
+}
+
+/* Continuous Animation - Prechoice */
+@keyframes constant-movement {
+    from {
+        transform: translateY(0%);
+    }
+
+    to {
+        transform: translateY(-50%);
+    }
+}

@@ -11,7 +11,7 @@
 
 section>textarea#itemInput {
     height: 50vh;
-    width: 50vh;
+    width: 60vw;
     overflow: auto;
     resize: none;
 }
@@ -148,7 +148,7 @@ div#pastGuessToggle>button:hover {
 section#dataInput textarea {
     background-color: var(--dark-secondary);
     color: var(--light-primary);
-    padding: .75rem;
+    padding: 1.5rem;
     border: 1px solid var(--dark-primary);
     box-shadow: 7px 7px 5px var(--dark-primary);
     border-radius: 1rem;
@@ -174,36 +174,6 @@ div.mainRectangle {
     background-color: var(--dark-primary);
 }
 
-div.animStart {
-    animation: diag-transition-start .6s linear;
-    right: 0px;
-}
-
-div.animEnd {
-    animation: diag-transition-end .6s linear;
-    right: 100%;
-}
-
-@keyframes diag-transition-start {
-    0% {
-        transform: translate(-100%, 0);
-    }
-
-    100% {
-        transform: translate(0%, 0);
-    }
-}
-
-@keyframes diag-transition-end {
-    0% {
-        transform: translate(100%, 0);
-    }
-
-    100% {
-        transform: translate(200%, 0);
-    }
-}
-
 /* Game */
 .showGame {
     display: block;
@@ -220,7 +190,6 @@ section#randomWheel {
     color: var(--light-secondary);
     height: 70vh;
     width: 70%;
-    overflow: hidden;
     text-align: center;
     border-radius: 3rem;
     border: 1px solid var(--light-primary);
@@ -232,18 +201,20 @@ section#randomWheel>section {
     overflow: hidden;
 }
 
-section#randomWheel>section>div#gameOptions>h1 {
+section#randomWheel h1 {
     background-color: var(--dark-secondary);
     color: var(--light-primary);
+    width: 50%;
+    margin: 2rem auto;
 }
 
-section#pastGuessToggle {
+section#randomWheel section#pastGuessToggle {
     text-align: center;
 }
 
 .playButton {
     position: absolute;
-    top: 40vh;
+    top: 45vh;
     left: 50%;
     transform: translate(-50%, 0);
     color: var(--light-primary);
@@ -257,17 +228,6 @@ section#pastGuessToggle {
     font-size: 10rem;
 }
 
-/* Continuous Animation - Prechoice */
-@keyframes constant-movement1 {
-    0% {
-        transform: translateY(0%);
-    }
-
-    100% {
-        transform: translateY(-103%);
-    }
-}
-
-.defaultAnim {
-    animation: constant-movement1 7s linear infinite;
+.gameList .gameOptions .gameOptions p {
+    margin: 0px;
 }

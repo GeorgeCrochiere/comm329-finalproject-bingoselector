@@ -82,7 +82,9 @@ function setGameContent() {
             temp = '';
         }
     }
-    items.push(temp);
+    if (temp != '') {
+        items.push(temp);
+    }
     sessionStorage.setItem('listArray', JSON.stringify(items));
     setVisual();
 }
@@ -98,8 +100,8 @@ function setVisual() {
     // several lists to account for 1 item, example
     let optionLists = document.getElementsByClassName('gameOptions');
     Array.prototype.forEach.call(optionLists, function (op) {
-        op.innerHTML = gameList;
-    })
+        op.innerHTML = gameList + gameList;
+    });
 }
 
 function setLongList(list) {

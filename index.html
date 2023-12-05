@@ -8,6 +8,7 @@
     <!-- Style Sheets -->
     <link rel="stylesheet" href="./src/css/modnorm.min.css" />
     <link rel="stylesheet" href="./src/css/styles.css" />
+    <link rel="stylesheet" href="./src/css/game_anim.css"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 <body>
@@ -37,9 +38,10 @@
         <h1>Play!</h1>
         <section class="gameList">
             <div id="gameOptions1" class="gameOptions defaultAnim"></div>
-            <div id="gameOptions2" class="gameOptions defaultAnim"></div>
+            <!-- <div id="gameOptions2" class="gameOptions defaultAnim"></div> -->
+            <div id="playList" class="hidden"></div>
         </section>
-        <a href="#" class="playButton"><i class="material-symbols-outlined close">play_circle</i></a>
+        <a href="#" onclick="playGame()" class="playButton"><i class="material-symbols-outlined close">play_circle</i></a>
         <div id="pastGuessToggle">
             <button onclick="toggleModal('pastModal')">Past Guesses</button>
             <button>Reset Game</button>
