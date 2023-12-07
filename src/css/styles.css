@@ -33,6 +33,11 @@ body {
         "footer" max-content / 1fr;
     min-height: 100%;
     background-color: var(--middle);
+    min-height: 500px;
+}
+
+html {
+    overflow-y: hidden;
 }
 
 section#enableJS {

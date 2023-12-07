@@ -41,11 +41,11 @@
             <!-- <div id="gameOptions2" class="gameOptions defaultAnim"></div> -->
             <div id="playList" class="hidden"></div>
         </section>
-        <a href="#" onclick="playGame()" class="playButton"><i class="material-symbols-outlined close">play_circle</i></a>
+        <a href="#" onclick="playGame()" class="playButton" id="playTurn"><i class="material-symbols-outlined close">play_circle</i></a>
         <div id="pastGuessToggle">
             <button onclick="toggleModal('pastModal')">Past Guesses</button>
-            <button>Reset Game</button>
-            <button>New Game</button>
+            <button onclick="resetGame()">Reset Game</button>
+            <button onclick="newGame()">New Game</button>
         </div>
     </section>
 
@@ -54,7 +54,7 @@
         <section class="modalContent">
             <h1>Past Choices</h1>
             <a onclick="toggleModal('pastModal')"><i class="material-symbols-outlined close">close_fullscreen</i></a>
-            <ul id="oldChoices"></ul>
+            <div id="oldChoices"></div>
         </section>
     </div>
 
@@ -63,9 +63,9 @@
         <section class="modalContent">
             <p><span id="dispChoice"></span></p>
             <button>Next Random Item</button>
-            <button>Next New Item</button>
-            <button>Reset Game</button>
-            <button>Change Game Data</button>
+            <button onclick="removeItem()">Next New Item</button>
+            <button onclick="resetGame()">Reset Game</button>
+            <button onclick="newGame()">Change Game Data</button>
         </section>
     </div>
 
