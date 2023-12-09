@@ -1,5 +1,5 @@
 function playGame() {
-    const backgroundColorList = ["red", "orange", "yellow", "lime", "aqua", "blue", "blueviolet"];
+    // const backgroundColorList = ["red", "orange", "yellow", "lime", "aqua", "blue", "blueviolet"];
 
     let items = JSON.parse(sessionStorage.getItem('listArray'));
     let randChoice = Math.floor(Math.random() * items.length);
@@ -17,8 +17,9 @@ function playGame() {
 
     let individualData = "";
     items.forEach((item) => {
-        let randColorIndex = Math.floor(Math.random() * backgroundColorList.length);
-        individualData += "\t\t<p class=\"listItem\"><span style=\"color: " + backgroundColorList[randColorIndex] + "\">&laquo;&emsp;</span>" + item + "<span style=\"color: " + backgroundColorList[randColorIndex] + "\">&emsp;&raquo;</span></p>\n";
+        // let randColorIndex = Math.floor(Math.random() * backgroundColorList.length);
+        // individualData += "\t\t<p class=\"listItem\"><span style=\"color: " + backgroundColorList[randColorIndex] + "\">&laquo;&emsp;</span><span class=\"itemOneLine\">" + item + "</span><span style=\"color: " + backgroundColorList[randColorIndex] + "\">&emsp;&raquo;</span></p>\n";
+        individualData += "\t\t<p class=\"listItem\"><span>" + item + "</span></p>\n";
     });
 
     // Add Extra visual items for effect starting and item selection
@@ -51,7 +52,7 @@ function resetGame() {
         }
         setVisual();
         endAnim();
-    }, 900);
+    }, 650);
 }
 
 function newGame() {
@@ -63,7 +64,7 @@ function newGame() {
         }
         showGame();
         endAnim();
-    }, 900);
+    }, 650);
 }
 
 function removeItem() {
@@ -80,7 +81,7 @@ function nextItem() {
         setVisual();
         closeResult();
         endAnim();
-    }, 900);
+    }, 650);
 }
 
 function nextItemRemove() {
@@ -143,14 +144,14 @@ function endStateNewGame() {
     endStateClear();
     setTimeout(() => {
         newGame();
-    }, 900);
+    }, 650);
 }
 
 function endStateResetGame() {
     endStateClear();
     setTimeout(() => {
         resetGame();
-    }, 900);
+    }, 650);
 }
 
 function endStateClear() {
@@ -171,5 +172,5 @@ function endStateClear() {
 
         endAnim();
 
-    }, 900);
+    }, 650);
 }

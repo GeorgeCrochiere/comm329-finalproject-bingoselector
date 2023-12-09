@@ -64,10 +64,12 @@
     <div id="results" class="modal hidden">
         <section class="modalContent">
             <p><span id="dispChoice"></span></p>
-            <button onclick="nextItem()">Next Random Item</button>
-            <button onclick="nextItemRemove()">Next New Item</button>
-            <button onclick="resetGame()">Reset Game</button>
-            <button onclick="newGame()">Change Game Data</button>
+            <div>
+                <button onclick="nextItem()" class="confirm">Next Random Item</button>
+                <button onclick="nextItemRemove()" class="confirm">Next New Item</button>
+                <button onclick="resetGame()" class="cancel">Reset Game</button>
+                <button onclick="newGame()" class="cancel">Change Game Data</button>
+            </div>
         </section>
     </div>
 

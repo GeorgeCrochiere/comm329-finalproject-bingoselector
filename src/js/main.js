@@ -29,7 +29,7 @@ function startGame() {
         // Hide game options and show game
         showGame();
         endAnim();
-    }, 900);
+    }, 650);
 }
 
 function startAnim() {
@@ -95,7 +95,7 @@ function setVisual() {
 
     let gameList = "";
     items.forEach((item) => {
-        gameList += "\t\t<p class=\"listItem\">" + item + "</p>\n";
+        gameList += "\t\t<p class=\"listItem\"><span>" + item + "</span></p>\n";
     });
     // several lists to account for 1 item, example
     let optionLists = document.getElementsByClassName('gameOptions');
