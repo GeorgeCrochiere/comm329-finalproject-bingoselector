@@ -31,13 +31,8 @@ body {
         "header" max-content
         "input" 1fr
         "footer" max-content / 1fr;
-    min-height: 100%;
     background-color: var(--middle);
-    min-height: 500px;
-}
-
-html {
-    overflow-y: hidden;
+    min-height: 100%;
 }
 
 section#enableJS {
@@ -187,9 +182,13 @@ div.mainRectangle {
 .gameList {
     overflow: hidden;
     height: fit-content;
+    min-height: 17rem;
 }
 
 section#randomWheel {
+    position: relative;
+    min-height: 32.6rem;
+    min-width: 50rem;
     margin: auto;
     background-color: var(--dark-secondary);
     color: var(--light-secondary);
@@ -219,9 +218,9 @@ section#randomWheel section#pastGuessToggle {
 
 .playButton {
     position: absolute;
-    top: 45vh;
+    top: 50%;
     left: 50%;
-    transform: translate(-50%, 0);
+    transform: translate(-50%, -50%);
     color: var(--light-primary);
     background-color: var(--transparent-background);
     border-radius: 50%;
@@ -233,6 +232,23 @@ section#randomWheel section#pastGuessToggle {
     font-size: 10rem;
 }
 
-.gameList .gameOptions .gameOptions p {
-    margin: 0px;
+.selectedItem {
+    position: absolute;
+    font-size: 4rem;
+    color: red;
+    top: 20%;
 }
+
+.left {
+    left: 30%;
+    transform: translate(-70%, 0);
+}
+
+.right {
+    right: 30%;
+    transform: translate(70%, 0);
+}
+
+.newItemSelection {}
+
+.newGameSelection {}

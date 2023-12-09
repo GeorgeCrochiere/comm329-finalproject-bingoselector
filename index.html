@@ -28,7 +28,7 @@
         <p>Enter the items that you want to incorporate into the wheel! Seperate each item with a newline by pressing <strong>ENTER</strong>.</p>
         <textarea id="itemInput" name="Item Input" placeholder="Item 1&#10;Item 2&#10;Item 3&#10;Item 4..."></textarea>
         <div class="buttonPanel">
-            <button id="resetButton" onclick="toggleModal('confirmModal')">Reset</button>
+            <button id="resetButton" onclick="toggleModal('confirmModal')">Clear</button>
             <button id="playButton" onclick="startGame()">Play!</button>
         </div>
     </section>
@@ -42,6 +42,8 @@
             <div id="playList" class="hidden"></div>
         </section>
         <a href="#" onclick="playGame()" class="playButton" id="playTurn"><i class="material-symbols-outlined close">play_circle</i></a>
+        <h3 class="selectedItem left">&raquo;</h3>
+        <h3 class="selectedItem right">&laquo;</h3>
         <div id="pastGuessToggle">
             <button onclick="toggleModal('pastModal')">Past Guesses</button>
             <button onclick="resetGame()">Reset Game</button>
@@ -62,8 +64,8 @@
     <div id="results" class="modal hidden">
         <section class="modalContent">
             <p><span id="dispChoice"></span></p>
-            <button>Next Random Item</button>
-            <button onclick="removeItem()">Next New Item</button>
+            <button onclick="nextItem()">Next Random Item</button>
+            <button onclick="nextItemRemove()">Next New Item</button>
             <button onclick="resetGame()">Reset Game</button>
             <button onclick="newGame()">Change Game Data</button>
         </section>
@@ -85,17 +87,28 @@
     <div id="confirmModal" class="modal hidden">
         <section class="modalContent">
             <h1>Confirm</h1>
-            <p>Are you sure you want to reset?</p>
+            <p>Are you sure you want to clear the current word list?</p>
             <button class="confirm" onclick="reset()"><i class="material-symbols-outlined">check_circle</i></button>
             <button class="cancel" onclick="toggleModal('confirmModal')"><i class="material-symbols-outlined">cancel</i></button>
         </section>
     </div>
 
+    <!-- No List Initially -->
     <div id="invalidListModal" class="modal hidden">
         <section class="modalContent">
             <h1>Error: No list present.</h1>
             <p>Please enter a list into the text box.</p>
             <button class="confirm" onclick="toggleModal('invalidListModal')"><i class="material-symbols-outlined">check_circle</i></button>
+        </section>
+    </div>
+
+    <!-- No List Left -->
+    <div id="emptyModal" class="modal hidden">
+        <section class="modalContent">
+            <h1>You're list is empty.</h1>
+            <p>Select a new game option:</p>
+            <button class="confirm" onclick="endStateResetGame()"><i class="material-symbols-outlined">history</i></button>
+            <button class="confirm" onclick="endStateNewGame()"><i class="material-symbols-outlined">edit</i></button>
         </section>
     </div>
 

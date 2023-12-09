@@ -1,4 +1,6 @@
 function playGame() {
+    const backgroundColorList = ["red", "orange", "yellow", "lime", "aqua", "blue", "blueviolet"];
+
     let items = JSON.parse(sessionStorage.getItem('listArray'));
     let randChoice = Math.floor(Math.random() * items.length);
     items = setLongList(items);
@@ -9,10 +11,14 @@ function playGame() {
 
     // Set Animation Data
     let playedData = document.getElementById('playList');
-    playGame.innerHTML = "";
+    while (playedData.firstChild) {
+        playedData.removeChild(playedData.lastChild);
+    }
+
     let individualData = "";
     items.forEach((item) => {
-        individualData += "\t\t<p class=\"listItem\">" + item + "</p>\n";
+        let randColorIndex = Math.floor(Math.random() * backgroundColorList.length);
+        individualData += "\t\t<p class=\"listItem\"><span style=\"color: " + backgroundColorList[randColorIndex] + "\">&laquo;&emsp;</span>" + item + "<span style=\"color: " + backgroundColorList[randColorIndex] + "\">&emsp;&raquo;</span></p>\n";
     });
 
     // Add Extra visual items for effect starting and item selection
@@ -37,12 +43,12 @@ function playGame() {
 function resetGame() {
     startAnim();
     document.getElementById('oldChoices').innerHTML = "";
+    storeGameContent();
     setGameContent();
     setTimeout(() => {
         if (!document.getElementById('results').classList.contains('hidden')) {
             closeResult();
         }
-        setGameContent();
         setVisual();
         endAnim();
     }, 900);
@@ -63,17 +69,28 @@ function newGame() {
 function removeItem() {
     let items = JSON.parse(sessionStorage.getItem('listArray'));
     let num = items.indexOf(document.getElementById('dispChoice').innerText);
-    console.log(num);
-
+    items.splice(num, 1);
+    sessionStorage.setItem('listArray', JSON.stringify(items));
+    console.log(items);
 }
 
 function nextItem() {
-
+    startAnim();
+    setTimeout(() => {
+        setVisual();
+        closeResult();
+        endAnim();
+    }, 900);
 }
 
 function nextItemRemove() {
-    removeItem();
-    nextItem();
+    if (JSON.parse(sessionStorage.getItem('listArray')).length == 1) {
+        toggleModal('results');
+        toggleModal('emptyModal');
+    } else {
+        removeItem();
+        nextItem();
+    }
 }
 
 function showPastGuesses() {
@@ -83,7 +100,7 @@ function showPastGuesses() {
 function showResult() {
     setTimeout(() => {
         document.getElementById('results').classList.toggle('hidden');
-    }, 3000);
+    }, 4000);
 }
 
 function closeResult() {
@@ -113,11 +130,46 @@ function animationDisp(index, listLength) {
     ];
 
     const timing = {
-        duration: 2500,
+        duration: 3500,
         iterations: 1,
         easing: "ease-out",
     };
 
     list.animate(transformations, timing);
     list.style.transform = "translateY(calc(-" + movement + "px + 2rem))";
+}
+
+function endStateNewGame() {
+    endStateClear();
+    setTimeout(() => {
+        newGame();
+    }, 900);
+}
+
+function endStateResetGame() {
+    endStateClear();
+    setTimeout(() => {
+        resetGame();
+    }, 900);
+}
+
+function endStateClear() {
+    startAnim();
+    setTimeout(() => {
+        // Hide modal
+        toggleModal('emptyModal');
+
+        // Reset Results
+        document.getElementById('playList').style.transform = "";
+        document.getElementById('playList').classList.toggle('hidden');
+        document.getElementById('playTurn').classList.toggle('hidden');
+        let optionLists = document.getElementsByClassName('gameOptions');
+        Array.prototype.forEach.call(optionLists, function (op) {
+            op.classList.toggle('hidden');
+            op.classList.toggle('defaultAnim');
+        });
+
+        endAnim();
+
+    }, 900);
 }
