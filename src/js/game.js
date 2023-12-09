@@ -1,3 +1,7 @@
+// preload audio
+var audio = new Audio("./src/audio/scroll_effect.mp3");
+
+
 function playGame() {
     // const backgroundColorList = ["red", "orange", "yellow", "lime", "aqua", "blue", "blueviolet"];
 
@@ -136,6 +140,7 @@ function animationDisp(index, listLength) {
         easing: "ease-out",
     };
 
+    audio.play();
     list.animate(transformations, timing);
     list.style.transform = "translateY(calc(-" + movement + "px + 2rem))";
 }
